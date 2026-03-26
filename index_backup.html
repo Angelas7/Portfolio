@@ -1,0 +1,752 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angela | Software Engineer</title>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --dragonfly-red: #d21f1f;
+            --white: #ffffff;
+            --dark-red: #b01a1a;
+            --black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: var(--dragonfly-red);
+            color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        /* NAVIGATION BAR */
+        nav {
+            background: rgba(176, 26, 26, 0.95);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed !important;
+            width: 90%;
+            top: 20px;
+            left: 5%;
+            border-radius: 50px;
+            z-index: 99999 !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            pointer-events: auto !important;
+            cursor: default;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        .lets-talk {
+            background: var(--white);
+            color: var(--dragonfly-red) !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+
+        /* HERO SECTION */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 0;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            align-items: center;
+            padding: 0 10%;
+        }
+
+        /* STICKY STACKING EFFECT */
+        section {
+            position: sticky !important;
+            top: 0 !important;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+            background-color: var(--dragonfly-red);
+            /* Solid BG fallback to prevent transparency issues */
+        }
+
+        #about {
+            z-index: 10;
+            background-color: var(--white) !important;
+        }
+
+        #skills {
+            z-index: 20;
+            background-color: var(--dragonfly-red) !important;
+        }
+
+        #projects {
+            z-index: 30;
+            background-color: var(--white) !important;
+        }
+
+        #achievements {
+            z-index: 40;
+            background-color: #a01818 !important;
+        }
+
+        #education {
+            z-index: 50;
+            background-color: var(--dragonfly-red) !important;
+        }
+
+        #certs {
+            z-index: 60;
+            background-color: var(--dragonfly-red) !important;
+        }
+
+        #info {
+            z-index: 70;
+            background-color: var(--white) !important;
+        }
+
+        .hero-portrait {
+            width: 350px;
+            height: 450px;
+            border: 2px solid var(--white);
+            background: #eee;
+            /* Placeholder for your image */
+            position: relative;
+        }
+
+        .hero-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: 0.5s;
+        }
+
+        .hero-portrait:hover img {
+            filter: grayscale(0%);
+        }
+
+        .hero-text {
+            text-align: left;
+            padding-left: 50px;
+        }
+
+        .hero-text h1 {
+            font-size: 72px;
+            line-height: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* MISSION & VISION (White Section) */
+        .mission-vision {
+            background: var(--white);
+            color: var(--dragonfly-red);
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .mission-vision h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* SKILLS GRID (Inspired by Team Section) */
+        .skills-section {
+            padding: 100px 10%;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px 20px;
+            border-radius: 15px;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* PROJECT CARDS (Floating Style) */
+        .projects-section {
+            background: var(--white);
+            color: var(--black);
+            padding: 100px 10%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .card {
+            position: relative;
+            width: 360px;
+            height: 250px;
+            border-radius: 20px;
+            padding: 25px;
+            color: white;
+            transform: rotate(-3deg);
+            transition: 0.3s;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .orange {
+            background: #ff7a00;
+        }
+
+        .red-card {
+            background: var(--dragonfly-red);
+        }
+
+        /* CERTIFICATE & EDUCATION CARDS */
+        .edu-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            color: var(--white);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            font-family: sans-serif;
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            color: var(--white);
+            text-decoration: none;
+            font-family: sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            background: var(--white);
+            color: var(--black);
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        .contact-left h2 {
+            color: var(--dragonfly-red);
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-family: sans-serif;
+            color: #444;
+        }
+
+        .contact-info span {
+            color: var(--dragonfly-red);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin-top: 30px;
+            background-image: url('https://via.placeholder.com/600x250?text=Map');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .contact-form-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-form-container h2 {
+            color: var(--dragonfly-red);
+            font-size: 50px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+            font-family: sans-serif;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            background: #fafafa;
+            font-family: sans-serif;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--dragonfly-red);
+            color: var(--white);
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-red);
+        }
+
+        footer {
+            padding: 30px 10%;
+            background: var(--dragonfly-red);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+
+        .cv-download {
+            position: absolute;
+            bottom: 50px;
+            right: 10%;
+            background: var(--white);
+            color: var(--dragonfly-red) !important;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10;
+            font-family: sans-serif;
+        }
+
+        .cv-download:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            background: #f9f9f9;
+        }
+
+        @media (max-width: 768px) {
+            .cv-download {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin: 0 auto 50px;
+                width: max-content;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .edu-card {
+                margin-bottom: 20px;
+            }
+
+            #education>div {
+                grid-template-columns: 1fr !important;
+            }
+
+            header {
+                grid-template-columns: 1fr;
+                text-align: center;
+                height: auto;
+                padding-top: 150px;
+            }
+
+            .hero-portrait {
+                margin: 0 auto;
+                width: 250px;
+                height: 350px;
+            }
+
+            .hero-text {
+                padding: 50px 0;
+            }
+
+            .hero-text h1 {
+                font-size: 60px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div style="font-weight: 900; font-size: 36px; letter-spacing: 2px;">Angela • Cybersecurity</div>
+        <ul class="nav-links">
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certs">Certificates</a></li>
+            <li><a href="#info" class="lets-talk">Let's Talk</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="hero-portrait">
+            <img src="cv photo.png" alt="Angela Portrait">
+        </div>
+        <div class="hero-text">
+            <h1>Angela,<br><span>Computer science</span><br>Cybersecurity.</h1>
+            <p style="font-size: 28px; font-weight: bold; margin-top: 20px;">Building secure, scalable systems where
+                logic meets real-world user experience.</p>
+        </div>
+        <a href="cv.png" download="cv.png" class="cv-download">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download CV
+        </a>
+    </header>
+
+    <section id="about"
+        style="background: var(--white); color: var(--dragonfly-red); padding: 100px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+        <h2>About Me</h2>
+        <div style="font-size: 26px; font-weight: 600; max-width: 1000px; margin: 0 auto; text-align: left;">
+            <p style="margin-bottom: 20px;">Computer Science student with a focus on Cybersecurity, committed to
+                engineering technology that people and organizations can depend on. Motivated by understanding complex
+                systems end-to-end — their architecture, vulnerabilities, and the strategies required to make them
+                robust in an increasingly hostile digital landscape.</p>
+            <p style="margin-bottom: 20px;">Builds software with an emphasis on clarity, scalability, and security,
+                transforming ideas into practical, high-value solutions. Combines strong technical foundations with
+                strategic thinking, continuous learning, and a drive to push beyond conventional limits.</p>
+            <p>Aspires to lead the development of secure, intelligent systems that power the future — creating
+                technology that is not only innovative, but responsible, resilient, and built to endure.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="100">C++ / Python / Java</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="200">HTML / CSS / JS</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="300">Jira / GitHub / Git</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="400">Selenium / MySQL</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="500">Problem Solving</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="600">Adaptability</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="700">Communication</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="800">Team Collaboration</div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h2 style="color: #666; text-align: center; margin-bottom: 50px;">PROJECTS</h2>
+        <div class="project-container">
+            <div class="card orange" data-aos="zoom-in-up" data-aos-delay="100">
+                <h3>Mental Health Simulator</h3>
+                <p>C++, Multithreading, STL[cite: 8].</p>
+                <a href="https://github.com/Angelas7/Mental-Health-Support" style="color:white;">View GitHub</a>
+            </div>
+            <div class="card red-card" data-aos="zoom-in-up" data-aos-delay="200">
+                <h3>Currency-Whisper-AI</h3>
+                <p>Python, REST APIs, JSON[cite: 13].</p>
+                <a href="https://currency-whisper-ai.vercel.app/" target="_blank" style="color:white;">View Project</a>
+                <!-- Hand-drawn arrow -->
+                <div
+                    style="position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: -1;">
+                    <svg width="80" height="80" viewBox="0 0 100 100" fill="none" stroke="var(--dragonfly-red)"
+                        stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
+                        style="transform: rotate(-10deg);">
+                        <path d="M 20 90 C 40 100, 70 80, 50 50 C 30 20, 10 50, 30 80 C 40 100, 70 80, 90 30" />
+                        <polyline points="65 20, 95 25, 80 50" />
+                    </svg>
+                    <span
+                        style="color: var(--dragonfly-red); font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 22px; font-weight: bold; transform: rotate(-5deg); margin-top: -10px;">Check
+                        this out!</span>
+                </div>
+            </div>
+            <div class="card orange" data-aos="zoom-in-up" data-aos-delay="300">
+                <h3>Dynamic Memory Visualizer</h3>
+                <p>Python, PyQt5, OS Concepts[cite: 18].</p>
+                <a href="https://github.com/Angelas7/Dynamic-Memory-Visualizer" style="color:white;">View GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements"
+        style="padding: 100px 10%; background: #a01818; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+        <h2>Achievements</h2>
+        <div style="margin-top: 30px; font-size: 32px; font-weight: 600;">
+            <p><strong>Innovate X Hackathon (2024):</strong> Reached the final round among 300+ participants in a
+                24-hour intense coding challenge.</p>
+        </div>
+    </section>
+
+    <section id="education"
+        style="padding: 100px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+        <h2 style="text-align: center;">Education</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 50px;">
+            <div class="edu-card" data-aos="zoom-in-up" data-aos-delay="100">
+                <h3 style="font-size: 32px; margin-bottom: 20px;">Lovely Professional University</h3>
+                <p style="font-size: 22px; line-height: 1.8;">
+                    <strong>B.Tech Computer Science and Engineering</strong><br>
+                    <span style="color: #ffcccc;">(2023 - 2027)</span><br><br>
+                    <strong>CGPA:</strong> 7.5
+                </p>
+            </div>
+            <div class="edu-card" data-aos="zoom-in-up" data-aos-delay="200">
+                <h3 style="font-size: 32px; margin-bottom: 20px;">Sacred Heart Sen. Sec. School</h3>
+                <p style="font-size: 22px; line-height: 1.8;">
+                    <strong>Intermediate (12th Grade)</strong><br>
+                    <span style="color: #ffcccc;">Passed: 2023 (76%)</span><br><br>
+                    <strong>Matriculation (10th Grade)</strong><br>
+                    <span style="color: #ffcccc;">Passed: 2021 (87%)</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="certs"
+        style="padding: 100px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+        <h2>Certificates</h2>
+        <div class="certs-grid">
+            <a href="https://www.cipherschools.com/certificate/preview?id=688386a1ca64e035786b1dc1" target="_blank"
+                class="cert-card" data-aos="zoom-in-up" data-aos-delay="100">
+                📄 Data Structures & Algorithms (CipherSchools)
+            </a>
+            <a href="https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL25CS16S54750034804278341" target="_blank"
+                class="cert-card" data-aos="zoom-in-up" data-aos-delay="200">
+                📄 Cryptography & Network Security (NPTEL)
+            </a>
+            <a href="https://drive.google.com/file/d/1qwvRhfHQZtGEsgYVlaHxGwAGzgGFBm3Y/view?usp=sharing" target="_blank"
+                class="cert-card" data-aos="zoom-in-up" data-aos-delay="300">
+                📄 C++ Programming (CSE Pathshala)
+            </a>
+            <a href="https://coursera.org/share/801132f980df927ad20e146cee29a2a4" target="_blank" class="cert-card"
+                data-aos="zoom-in-up" data-aos-delay="400">
+                📄 Computer Networking (Google)
+            </a>
+            <a href="https://infyspringboard.onwingspan.com/web/en/app/profile/competency/certificate" target="_blank"
+                class="cert-card" data-aos="zoom-in-up" data-aos-delay="500">
+                📄 ChatGPT-4 Prompt Engineering: ChatGPT, Generative AI & LLM (Infosys)
+            </a>
+        </div>
+    </section>
+
+    <section id="info" class="contact-section">
+        <div class="contact-left">
+            <h2>Get in Touch</h2>
+            <p style="font-size: 18px; margin-bottom: 40px; color: #444; font-family: sans-serif;">We'd love to hear
+                from you! Whether you have a question about my work, want to discuss a project, or just want to say
+                hello, feel free to reach out.</p>
+
+            <div class="contact-info">
+                <p><span>Email:</span> angela.23@lpu.in</p>
+                <p><span>Phone:</span> +91-6284897698</p>
+                <p><span>Office:</span> LPU Campus, Punjab</p>
+            </div>
+
+            <a href="https://www.google.com/maps/place/Jalandhar,+Punjab/@31.3223978,75.5734192,12z/data=!3m1!4b1!4m6!3m5!1s0x391a5a5747a9eb91:0xc74b34c05aa5b4b8!8m2!3d31.3260152!4d75.5761829!16zL20vMDJjYjFq?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                style="display: block; margin-top: 30px; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <img src="lpu_map.png" alt="Map to LPU Campus"
+                    style="width: 100%; height: 250px; object-fit: cover; display: block; transition: opacity 0.3s;"
+                    onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+            </a>
+        </div>
+
+        <div class="contact-right">
+            <form class="contact-form-container" onsubmit="event.preventDefault(); alert('Message sent!');">
+                <h2>Start a Conversation.</h2>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label>Company Name</label>
+                    <input type="text" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea placeholder="" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Let's Talk</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <p>Angela | Software Engineer</p>
+        </div>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/angela005/" target="_blank" style="color:white; transition: 0.3s;"
+                title="LinkedIn" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='white'">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+            </a>
+            <!-- GitHub -->
+            <a href="https://github.com/Angelas7" target="_blank" style="color:white; transition: 0.3s;" title="GitHub"
+                onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='white'">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000, // Speed of the pop-up (1 second)
+            once: false,    // Set to 'false' if you want it to pop up every time you scroll up and down
+            mirror: true    // Animates elements out while scrolling past them
+        });
+
+        // FIX: Manually handle nav clicks to bypass position: sticky scrolling bugs in browsers
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

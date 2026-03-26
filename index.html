@@ -1,0 +1,823 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angela | Software Engineer</title>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --dragonfly-red: #d21f1f;
+            --white: #ffffff;
+            --dark-red: #b01a1a;
+            --black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: var(--dragonfly-red);
+            color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        /* NAVIGATION BAR */
+        nav {
+            background: rgba(176, 26, 26, 0.95);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed !important;
+            width: 90%;
+            top: 20px;
+            left: 5%;
+            border-radius: 50px;
+            z-index: 99999 !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            pointer-events: auto !important;
+            cursor: default;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        .lets-talk {
+            background: var(--white);
+            color: var(--dragonfly-red) !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+
+        /* HERO SECTION */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 0;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            align-items: center;
+            padding: 0 10%;
+        }
+
+        /* STICKY STACKING EFFECT */
+        section {
+            position: sticky !important;
+            top: 0 !important;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+            background-color: var(--dragonfly-red);
+            /* Solid BG fallback to prevent transparency issues */
+        }
+
+        #about {
+            z-index: 10;
+            background-color: var(--white) !important;
+        }
+
+        #skills {
+            z-index: 20;
+            background-color: var(--dragonfly-red) !important;
+        }
+
+        #projects {
+            z-index: 30;
+            background-color: var(--white) !important;
+        }
+
+        #achievements {
+            z-index: 40;
+            background-color: #a01818 !important;
+        }
+
+        #education {
+            z-index: 50;
+            background-color: var(--dragonfly-red) !important;
+        }
+
+        #certs {
+            z-index: 60;
+            background-color: var(--dragonfly-red) !important;
+        }
+
+        #info {
+            z-index: 70;
+            background-color: var(--white) !important;
+        }
+
+        .hero-portrait {
+            width: 350px;
+            height: 450px;
+            border: 2px solid var(--white);
+            background: #eee;
+            /* Placeholder for your image */
+            position: relative;
+        }
+
+        .hero-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .hero-text {
+            text-align: left;
+            padding-left: 50px;
+        }
+
+        .hero-text h1 {
+            font-size: 72px;
+            line-height: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* MISSION & VISION (White Section) */
+        .mission-vision {
+            background: var(--white);
+            color: var(--dragonfly-red);
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .mission-vision h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* SKILLS GRID (Inspired by Team Section) */
+        .skills-section {
+            padding: 100px 10%;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px 20px;
+            border-radius: 15px;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* PROJECT CARDS (Floating Style) */
+        .projects-section {
+            background: var(--white);
+            color: var(--black);
+            padding: 100px 10%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .card {
+            position: relative;
+            width: 360px;
+            height: 250px;
+            border-radius: 20px;
+            padding: 25px;
+            color: white;
+            transform: rotate(-3deg);
+            transition: 0.3s;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .orange {
+            background: #ff7a00;
+        }
+
+        .red-card {
+            background: var(--dragonfly-red);
+        }
+
+        /* CERTIFICATE & EDUCATION CARDS */
+        .edu-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            color: var(--white);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            font-family: sans-serif;
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            color: var(--white);
+            text-decoration: none;
+            font-family: sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            background: var(--white);
+            color: var(--black);
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        .contact-left h2 {
+            color: var(--dragonfly-red);
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-family: sans-serif;
+            color: #444;
+        }
+
+        .contact-info span {
+            color: var(--dragonfly-red);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin-top: 30px;
+            background-image: url('https://via.placeholder.com/600x250?text=Map');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .contact-form-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-form-container h2 {
+            color: var(--dragonfly-red);
+            font-size: 50px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+            font-family: sans-serif;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            background: #fafafa;
+            font-family: sans-serif;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--dragonfly-red);
+            color: var(--white);
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-red);
+        }
+
+        footer {
+            padding: 30px 10%;
+            background: var(--dragonfly-red);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+
+        .cv-download {
+            position: absolute;
+            bottom: 50px;
+            right: 10%;
+            background: var(--white);
+            color: var(--dragonfly-red) !important;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10;
+            font-family: sans-serif;
+        }
+
+        .cv-download:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            background: #f9f9f9;
+        }
+
+        @media (max-width: 768px) {
+            .cv-download {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin: 0 auto 50px;
+                width: max-content;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .edu-card {
+                margin-bottom: 20px;
+            }
+
+            #education>div {
+                grid-template-columns: 1fr !important;
+            }
+
+            header {
+                grid-template-columns: 1fr;
+                text-align: center;
+                height: auto;
+                padding-top: 150px;
+            }
+
+            .hero-portrait {
+                margin: 0 auto;
+                width: 250px;
+                height: 350px;
+            }
+
+            .hero-text {
+                padding: 50px 0;
+            }
+
+            .hero-text h1 {
+                font-size: 60px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div style="font-weight: 900; font-size: 36px; letter-spacing: 2px;">Angela • Cybersecurity</div>
+        <ul class="nav-links">
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certs">Certificates</a></li>
+            <li><a href="#info" class="lets-talk">Let's Talk</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="hero-portrait">
+            <img src="cv photo.png" alt="Angela Portrait">
+        </div>
+        <div class="hero-text">
+            <h1>Angela,<br><span>Computer science</span><br>Cybersecurity.</h1>
+            <p style="font-size: 28px; font-weight: bold; margin-top: 20px;">Building secure, scalable systems where
+                logic meets real-world user experience.</p>
+        </div>
+        <a href="cv.pdf" download class="cv-download">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download CV
+        </a>
+    </header>
+
+    <section id="about"
+        style="background: var(--white); color: var(--dragonfly-red); padding: 100px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+        <h2>About Me</h2>
+        <div style="font-size: 26px; font-weight: 600; max-width: 1000px; margin: 0 auto; text-align: left;">
+            <p style="margin-bottom: 20px;">Computer Science student with a focus on Cybersecurity, committed to
+                engineering technology that people and organizations can depend on. Motivated by understanding complex
+                systems end-to-end — their architecture, vulnerabilities, and the strategies required to make them
+                robust in an increasingly hostile digital landscape.</p>
+            <p style="margin-bottom: 20px;">Builds software with an emphasis on clarity, scalability, and security,
+                transforming ideas into practical, high-value solutions. Combines strong technical foundations with
+                strategic thinking, continuous learning, and a drive to push beyond conventional limits.</p>
+            <p>Aspires to lead the development of secure, intelligent systems that power the future — creating
+                technology that is not only innovative, but responsible, resilient, and built to endure.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="100">C++ / Python / Java</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="200">HTML / CSS / JS</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="300">Jira / GitHub / Git</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="400">Selenium / MySQL</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="500">Problem Solving</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="600">Adaptability</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="700">Communication</div>
+            <div class="skill-card" data-aos="zoom-in-up" data-aos-delay="800">Team Collaboration</div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h2 style="color: #666; text-align: center; margin-bottom: 50px;">PROJECTS</h2>
+        <div class="project-container">
+            <div class="card orange" data-aos="zoom-in-up" data-aos-delay="100">
+                <h3>Mental Health Simulator</h3>
+                <p>C++, Multithreading, STL[cite: 8].</p>
+                <a href="https://github.com/Angelas7/Mental-Health-Support" style="color:white;">View GitHub</a>
+            </div>
+            <div class="card red-card" data-aos="zoom-in-up" data-aos-delay="200">
+                <h3>Currency-Whisper-AI</h3>
+                <p>Python, REST APIs, JSON[cite: 13].</p>
+                <a href="https://currency-whisper-ai.vercel.app/" target="_blank" style="color:white;">View Project</a>
+                <!-- Hand-drawn arrow -->
+                <div
+                    style="position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: -1;">
+                    <svg width="80" height="80" viewBox="0 0 100 100" fill="none" stroke="var(--dragonfly-red)"
+                        stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
+                        style="transform: rotate(-10deg);">
+                        <path d="M 20 90 C 40 100, 70 80, 50 50 C 30 20, 10 50, 30 80 C 40 100, 70 80, 90 30" />
+                        <polyline points="65 20, 95 25, 80 50" />
+                    </svg>
+                    <span
+                        style="color: var(--dragonfly-red); font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 22px; font-weight: bold; transform: rotate(-5deg); margin-top: -10px;">Check
+                        this out!</span>
+                </div>
+            </div>
+            <div class="card orange" data-aos="zoom-in-up" data-aos-delay="300">
+                <h3>Dynamic Memory Visualizer</h3>
+                <p>Python, PyQt5, OS Concepts[cite: 18].</p>
+                <a href="https://github.com/Angelas7/Dynamic-Memory-Visualizer" style="color:white;">View GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements"
+        style="padding: 100px 10%; background: #a01818; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+        <h2>Achievements</h2>
+        <div style="margin-top: 30px; font-size: 32px; font-weight: 600;">
+            <p><strong>Innovate X Hackathon (2024):</strong> Reached the final round among 300+ participants in a
+                24-hour intense coding challenge.</p>
+        </div>
+    </section>
+
+    <section id="education"
+        style="padding: 100px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+        <h2 style="text-align: center;">Education</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 50px;">
+            <div class="edu-card" data-aos="zoom-in-up" data-aos-delay="100">
+                <h3 style="font-size: 32px; margin-bottom: 20px;">Lovely Professional University</h3>
+                <p style="font-size: 22px; line-height: 1.8;">
+                    <strong>B.Tech Computer Science and Engineering</strong><br>
+                    <span style="color: #ffcccc;">(2023 - 2027)</span><br><br>
+                    <strong>CGPA:</strong> 7.5
+                </p>
+            </div>
+            <div class="edu-card" data-aos="zoom-in-up" data-aos-delay="200">
+                <h3 style="font-size: 32px; margin-bottom: 20px;">Sacred Heart Sen. Sec. School</h3>
+                <p style="font-size: 22px; line-height: 1.8;">
+                    <strong>Intermediate (12th Grade)</strong><br>
+                    <span style="color: #ffcccc;">Passed: 2023 (76%)</span><br><br>
+                    <strong>Matriculation (10th Grade)</strong><br>
+                    <span style="color: #ffcccc;">Passed: 2021 (87%)</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="certs"
+        style="padding: 100px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+        <h2>Certificates</h2>
+        <div class="certs-grid">
+            <a href="https://www.cipherschools.com/certificate/preview?id=688386a1ca64e035786b1dc1" target="_blank"
+                class="cert-card" data-aos="zoom-in-up" data-aos-delay="100">
+                📄 Data Structures & Algorithms (CipherSchools)
+            </a>
+            <a href="https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL25CS16S54750034804278341" target="_blank"
+                class="cert-card" data-aos="zoom-in-up" data-aos-delay="200">
+                📄 Cryptography & Network Security (NPTEL)
+            </a>
+            <a href="https://drive.google.com/file/d/1qwvRhfHQZtGEsgYVlaHxGwAGzgGFBm3Y/view?usp=sharing" target="_blank"
+                class="cert-card" data-aos="zoom-in-up" data-aos-delay="300">
+                📄 C++ Programming (CSE Pathshala)
+            </a>
+            <a href="https://coursera.org/share/801132f980df927ad20e146cee29a2a4" target="_blank" class="cert-card"
+                data-aos="zoom-in-up" data-aos-delay="400">
+                📄 Computer Networking (Google)
+            </a>
+            <a href="https://infyspringboard.onwingspan.com/web/en/app/profile/competency/certificate" target="_blank"
+                class="cert-card" data-aos="zoom-in-up" data-aos-delay="500">
+                📄 ChatGPT-4 Prompt Engineering: ChatGPT, Generative AI & LLM (Infosys)
+            </a>
+        </div>
+    </section>
+
+    <section id="info" class="contact-section">
+        <div class="contact-left">
+            <h2>Get in Touch</h2>
+            <p style="font-size: 18px; margin-bottom: 40px; color: #444; font-family: sans-serif;">We'd love to hear
+                from you! Whether you have a question about my work, want to discuss a project, or just want to say
+                hello, feel free to reach out.</p>
+
+            <div class="contact-info">
+                <p><span>Email:</span> angela.23@lpu.in</p>
+                <p><span>Phone:</span> +91-6284897698</p>
+                <p><span>Office:</span> LPU Campus, Punjab</p>
+            </div>
+
+            <div style="display: flex; gap: 20px; align-items: center; margin-top: 25px;">
+                <a href="https://github.com/Angelas7" target="_blank" style="color:#444; transition: 0.3s;"
+                    title="GitHub" onmouseover="this.style.color='var(--dragonfly-red)'"
+                    onmouseout="this.style.color='#444'">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/angela005/" target="_blank" style="color:#444; transition: 0.3s;"
+                    title="LinkedIn" onmouseover="this.style.color='var(--dragonfly-red)'"
+                    onmouseout="this.style.color='#444'">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                </a>
+                <a href="https://leetcode.com/u/Angela_s005/" target="_blank" style="color:#444; transition: 0.3s;"
+                    title="LeetCode" onmouseover="this.style.color='var(--dragonfly-red)'"
+                    onmouseout="this.style.color='#444'">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114l5.405-5.787c.55-.589.52-1.517-.067-2.067-.34-.319-.776-.465-1.18-.323zM22.843 14.13a1.375 1.375 0 0 0-1.947.054l-3.951 4.229a3.036 3.036 0 0 1-4.28 0 3.033 3.033 0 0 1 0-4.28l.84-.897a1.376 1.376 0 1 0-1.996-1.884l-.84.898a5.79 5.79 0 0 0-1.488 3.529 5.787 5.787 0 0 0 1.488 4.606 5.808 5.808 0 0 0 4.298 1.7 5.804 5.804 0 0 0 4.294-1.7l3.955-4.237a1.376 1.376 0 0 0-.053-1.948z" />
+                    </svg>
+                </a>
+                <a href="https://www.hackerrank.com/profile/merika_93160" target="_blank"
+                    style="color:#444; transition: 0.3s;" title="HackerRank"
+                    onmouseover="this.style.color='var(--dragonfly-red)'" onmouseout="this.style.color='#444'">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M11.983 23.957c-2.02.043-3.665-.776-5.18-2.268C3.89 18.82 2.766 15.635 2.775 11.96c.01-4.004 1.371-7.148 4.276-9.6C9.114.73 11.23-.053 14.502.003c4.128.07 7.214 1.36 9.49 4.27 2.102 2.69 2.943 5.706 2.872 9.24-.076 3.82-1.396 6.88-4.148 9.38-2.616 2.376-5.46 3.256-8.981 3.42-.647.03-1.294.04-1.94 0h-.01zm7.882-14.86c-1.334.02-2.4.92-2.583 2.18-.088.61.164 1.15.548 1.58.583.65 1.41.87 2.218.66.72-.18 1.25-.66 1.464-1.37.28-.93-.11-1.97-1.12-2.55-.17-.1-.36-.14-.545-.16v-.34h.018v3.42c-.015.01-.06.01-.137.01h-2.18v-5.26h2.317c1.336 0 2.404.92 2.585 2.18.087.61-.164 1.15-.547 1.58-.582.65-1.41.87-2.217.66-.722-.18-1.253-.66-1.467-1.37-.28-.93.112-1.97 1.118-2.55.174-.1.36-.14.546-.16v-.34H11.9v3.42c-.018.01-.06.01-.138.01H9.58V8.75h2.317c1.336 0 2.404.92 2.585 2.18.086.61-.165 1.15-.548 1.58-.582.65-1.41.87-2.217.66-.723-.18-1.253-.66-1.468-1.37-.28-.93.113-1.97 1.12-2.55.173-.1.36-.14.545-.16v-.34H7.217v3.42c-.018.01-.06.01-.138.01H4.9V8.75h2.318V6.1c0-.12.1-.22.218-.22h2.24c.12 0 .217.1.217.22v2.65h2.316V6.1c0-.12.097-.22.217-.22h2.24c.12 0 .218.1.218.22v5.26h-2.316V8.75h-2.18v.34c.185.02.37.06.544.16 1.008.58 1.4 1.62 1.12 2.55-.213.71-.744 1.19-1.465 1.37-.808.21-1.636-.01-2.218-.66-.384-.43-.637-.97-.548-1.58.18-1.26 1.25-2.16 2.585-2.18v.34c-.187-.02-.37-.06-.546-.16-1.007-.58-1.4-1.62-1.12-2.55.214-.71.745-1.19 1.466-1.37.808-.21 1.636-.01 2.22-.66.383-.43.636-.97.548-1.58-.182-1.26-1.25-2.16-2.586-2.18v-.34z" />
+                    </svg>
+                </a>
+            </div>
+
+            <a href="https://www.google.com/maps/place/Jalandhar,+Punjab/@31.3223978,75.5734192,12z/data=!3m1!4b1!4m6!3m5!1s0x391a5a5747a9eb91:0xc74b34c05aa5b4b8!8m2!3d31.3260152!4d75.5761829!16zL20vMDJjYjFq?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                style="display: block; margin-top: 30px; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <img src="lpu_map.png" alt="Map to LPU Campus"
+                    style="width: 100%; height: 250px; object-fit: cover; display: block; transition: opacity 0.3s;"
+                    onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+            </a>
+        </div>
+
+        <div class="contact-right">
+            <form class="contact-form-container" onsubmit="event.preventDefault(); alert('Message sent!');">
+                <h2>Start a Conversation.</h2>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label>Company Name</label>
+                    <input type="text" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea placeholder="" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Let's Talk</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <p>Angela | Software Engineer</p>
+        </div>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <!-- TikTok -->
+            <a href="#" target="_blank" style="color:white; transition: 0.3s;" title="TikTok"
+                onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='white'">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                </svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" target="_blank" style="color:white; transition: 0.3s;" title="Instagram"
+                onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='white'">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/angela005/" target="_blank" style="color:white; transition: 0.3s;"
+                title="LinkedIn" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='white'">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+            </a>
+            <!-- GitHub -->
+            <a href="https://github.com/Angelas7" target="_blank" style="color:white; transition: 0.3s;" title="GitHub"
+                onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='white'">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+            </a>
+            <!-- Twitter -->
+            <a href="#" target="_blank" style="color:white; transition: 0.3s;" title="Twitter"
+                onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='white'">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                </svg>
+            </a>
+            <!-- LeetCode -->
+            <a href="https://leetcode.com/u/Angela_s005/" target="_blank" style="color:white; transition: 0.3s;"
+                title="LeetCode" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='white'">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114l5.405-5.787c.55-.589.52-1.517-.067-2.067-.34-.319-.776-.465-1.18-.323zM22.843 14.13a1.375 1.375 0 0 0-1.947.054l-3.951 4.229a3.036 3.036 0 0 1-4.28 0 3.033 3.033 0 0 1 0-4.28l.84-.897a1.376 1.376 0 1 0-1.996-1.884l-.84.898a5.79 5.79 0 0 0-1.488 3.529 5.787 5.787 0 0 0 1.488 4.606 5.808 5.808 0 0 0 4.298 1.7 5.804 5.804 0 0 0 4.294-1.7l3.955-4.237a1.376 1.376 0 0 0-.053-1.948z" />
+                </svg>
+            </a>
+            <!-- HackerRank -->
+            <a href="https://www.hackerrank.com/profile/merika_93160" target="_blank"
+                style="color:white; transition: 0.3s;" title="HackerRank" onmouseover="this.style.color='#f0f0f0'"
+                onmouseout="this.style.color='white'">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M11.983 23.957c-2.02.043-3.665-.776-5.18-2.268C3.89 18.82 2.766 15.635 2.775 11.96c.01-4.004 1.371-7.148 4.276-9.6C9.114.73 11.23-.053 14.502.003c4.128.07 7.214 1.36 9.49 4.27 2.102 2.69 2.943 5.706 2.872 9.24-.076 3.82-1.396 6.88-4.148 9.38-2.616 2.376-5.46 3.256-8.981 3.42-.647.03-1.294.04-1.94 0h-.01zm7.882-14.86c-1.334.02-2.4.92-2.583 2.18-.088.61.164 1.15.548 1.58.583.65 1.41.87 2.218.66.72-.18 1.25-.66 1.464-1.37.28-.93-.11-1.97-1.12-2.55-.17-.1-.36-.14-.545-.16v-.34h.018v3.42c-.015.01-.06.01-.137.01h-2.18v-5.26h2.317c1.336 0 2.404.92 2.585 2.18.087.61-.164 1.15-.547 1.58-.582.65-1.41.87-2.217.66-.722-.18-1.253-.66-1.467-1.37-.28-.93.112-1.97 1.118-2.55.174-.1.36-.14.546-.16v-.34H11.9v3.42c-.018.01-.06.01-.138.01H9.58V8.75h2.317c1.336 0 2.404.92 2.585 2.18.086.61-.165 1.15-.548 1.58-.582.65-1.41.87-2.217.66-.723-.18-1.253-.66-1.468-1.37-.28-.93.113-1.97 1.12-2.55.173-.1.36-.14.545-.16v-.34H7.217v3.42c-.018.01-.06.01-.138.01H4.9V8.75h2.318V6.1c0-.12.1-.22.218-.22h2.24c.12 0 .217.1.217.22v2.65h2.316V6.1c0-.12.097-.22.217-.22h2.24c.12 0 .218.1.218.22v5.26h-2.316V8.75h-2.18v.34c.185.02.37.06.544.16 1.008.58 1.4 1.62 1.12 2.55-.213.71-.744 1.19-1.465 1.37-.808.21-1.636-.01-2.218-.66-.384-.43-.637-.97-.548-1.58.18-1.26 1.25-2.16 2.585-2.18v.34c-.187-.02-.37-.06-.546-.16-1.007-.58-1.4-1.62-1.12-2.55.214-.71.745-1.19 1.466-1.37.808-.21 1.636-.01 2.22-.66.383-.43.636-.97.548-1.58-.182-1.26-1.25-2.16-2.586-2.18v-.34z" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000, // Speed of the pop-up (1 second)
+            once: false,    // Set to 'false' if you want it to pop up every time you scroll up and down
+            mirror: true    // Animates elements out while scrolling past them
+        });
+
+        // FIX: Manually handle nav clicks to bypass position: sticky scrolling bugs in browsers
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
